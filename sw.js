@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='sermon-cards-v1.0.0';
+const CACHE='sermon-cards-v1.0.1';
 const ASSETS=['./','./index.html','./styles.css','./core.js','./app.js','./vendor/jszip.min.js','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('sermon-cards-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();})());});
